@@ -1,0 +1,297 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.listing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.listing {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.listing:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.listing-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.listing-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.listing-info {
+    padding: 15px;
+    text-align: left;
+}
+
+.listing-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #e71313;
+}
+
+.listing-price {
+    font-size: 16px;
+    color: black;
+    margin: 5px 0;
+}
+
+.listing-location {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 5px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-size: 18px; /* Increase overall body font size */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 40px;
+    font-size: 36px; /* Make heading bigger */
+}
+
+.listing-form {
+    background: #fff;
+    padding: 40px; /* Increase padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* Slightly wider form */
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 20px; /* Increase label size */
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-input {
+    font-size: 18px; /* Increase input font size */
+    padding: 12px; /* Increase padding */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+}
+
+.form-input:focus {
+    border-color: #007bff;
+}
+
+textarea.form-input {
+    height: 120px; /* Make textarea slightly taller */
+    resize: vertical;
+}
+
+.form-button {
+    padding: 14px 24px; /* Make button bigger */
+    font-size: 18px; /* Bigger font */
+    background-color: #348cea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-weight: bold;
+}
+
+.form-button:hover {
+    background-color: #1860ad;
+}
+
+.form-button:active {
+    background-color: #1860ad;
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.listing-card {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.listing-image {
+    width: 100%;
+    height: 300px;
+    background-color:#ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid #eee;
+}
+
+.listing-content {
+    padding: 20px;
+}
+
+.listing-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.listing-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.listing-price {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.listing-location,
+.listing-country {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+.listing-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+.edit {
+    color: white;
+    font-size: 16px;
+    background-color: #007bff;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 10px 20px;
+     border-radius: 5px;
+    font-weight: lighter;
+    transition: all 0.3s ease;
+
+}
+
+.edit:hover {
+    background-color: #05478e;
+    transform: scale(1.05);
+}
+
+.delete {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.delete button {
+    background-color: #e74c3c;
+    color: white;
+    border: 1px solid #e74c3c;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete button:hover {
+    background-color: #0c0a09;
+    border-color: #c0392b;
+    
+}
+
+.delete button:focus {
+    outline: none;
+}
+
+.reviews-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* review card styling */
+.card {
+    
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 15px;
+}
+
+
+#map {
+    margin: auto;
+    margin-bottom: 50px;
+    height: 500px;
+    width : 700px;
+}

@@ -1,0 +1,20 @@
+<% layout("/layout/boilerplate") %>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<body>
+    <div class="listing-container">
+        <% for (let listing of allListings) { %>
+            <div class="listing">
+                <a href="/listings/<%= listing._id %>" class="listing-link">
+                    <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="listing-image">
+                    <div class="listing-info">
+                        <h3 class="listing-title"><%= listing.title %></h3>
+                        <p class="listing-price">&#8377;<%= listing.price %></p>
+                        <p class="listing-location"><%= listing.location %></p>
+                    </div>
+                </a>
+            </div>
+        <% } %>
+    </div>
+</body>

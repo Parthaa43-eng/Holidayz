@@ -1,0 +1,32 @@
+<% layout("/layout/boilerplate") %>
+<link rel="stylesheet" href="/css/style.css">
+<body>
+    <h1>Edit this Listing</h1>
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="listing-form" enctype="multipart/form-data">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" id="title" name="listing[title]" value="<%= listing.title %>" placeholder="Title" class="form-input">
+        <br>
+
+        <label for="description" class="form-label">Description:</label>
+        <textarea id="description" name="listing[description]" placeholder="Description" class="form-input"><%= listing.description %></textarea>
+        <br>
+
+        <label for="image" class="form-label">Upload new image</label>
+        <input type="file" id="image" name="listing[image]"  class="form-input">
+        <br>
+
+        <label for="price" class="form-label">Price:</label>
+        <input type="number" id="price" name="listing[price]" value="<%= listing.price %>" placeholder="Price" class="form-input">
+        <br>
+
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" id="location" name="listing[location]" value="<%= listing.location %>" placeholder="Location" class="form-input">
+        <br>
+
+        <label for="country" class="form-label">Country:</label>
+        <input type="text" id="country" name="listing[country]" value="<%= listing.country %>" placeholder="Country" class="form-input">
+        <br>
+
+        <button type="submit" class="form-button">Update</button>
+    </form>
+</body>

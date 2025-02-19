@@ -1,0 +1,121 @@
+/* --------------------------------------------- */
+/* Navbar Styles */
+/* --------------------------------------------- */
+
+/* General Navbar Styles */
+.navbar {
+  height: 5rem;
+  background-color: aliceblue;
+  font-size: 18px; /* Increase overall navbar font size */
+}
+
+/* Navbar Brand Styling */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Text color */
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+/* Navbar Brand Heading */
+.navbar-brand h1 {
+  margin: 0;
+  font-size: 36px; /* Make brand heading bigger */
+  color: #007bff; /* Color for the text */
+  transition: color 0.3s ease;
+}
+
+/* Navbar Brand Hover Effect */
+.navbar-brand:hover h1 {
+  color: #0056b3;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  font-size: 20px; /* Increase nav links size */
+  font-weight: bold; /* Make it more prominent */
+}
+
+/* Navbar Navigation Links Hover Effect */
+.navbar-nav .nav-link:hover {
+  color: #0056b3 !important; /* Change text color on hover */
+}
+
+/* --------------------------------------------- */
+/* Footer Styles */
+/* --------------------------------------------- */
+
+/* General Footer Styles */
+footer {
+  background-color: #f8f9fa; /* Light grey background */
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+  border-top: 2px solid #dee2e6; /* Adds a subtle top border for separation */
+  font-size: 18px; /* Increase footer font size */
+}
+
+/* Footer Container Styles */
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer Column Headings */
+.col-4 h2 {
+  font-size: 26px; /* Bigger footer headings */
+  color: #343a40; /* Dark grey for headings */
+  margin-bottom: 10px;
+  text-transform: uppercase; /* Make the heading uppercase */
+}
+
+/* Footer Links Styling */
+.col-4 a {
+  color: black; /* Default link color */
+  line-height: 30px;
+  text-decoration: none;
+  font-size: 18px; /* Increase footer link size */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Footer Links Hover Effect */
+.col-4 a:hover {
+  color: #0056b3; /* Change link color on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Footer Padding Adjustments */
+footer {
+  padding: 30px 20px; /* Spacing for footer content */
+}
+
+/* Footer Container Responsive Styles */
+footer .footer-container {
+  flex-wrap: wrap; /* Allows responsive layout on smaller screens */
+}
+
+/* Footer Columns Styling */
+.col-4 {
+  flex: 1 1 calc(33.33% - 20px); /* Equal-width columns with spacing */
+  margin: 10px;
+  min-width: 200px;
+}
+
+/* --------------------------------------------- */
+/* Responsive Styles for Smaller Screens */
+/* --------------------------------------------- */
+
+/* Adjust Footer Container for Small Screens */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column; /* Stack columns vertically on smaller screens */
+  }
+  .col-4 {
+      margin-bottom: 20px;
+  }
+}

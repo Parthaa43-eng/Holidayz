@@ -1,0 +1,33 @@
+<% layout('/layout/boilerplate') %>
+<link rel="stylesheet" href="/css/authStyling.css">
+<body>
+    <h1>Login to Holidayz</h1>
+    <form action="/login" method="POST" >
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Username" class="form-input" required />
+            
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" class="form-input" required />
+            
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("form").addEventListener("submit", function(event) {
+            if (!this.checkValidity()) {
+                event.preventDefault(); 
+                event.stopPropagation();
+            }
+            this.classList.add("was-validated");
+        });
+    });
+</script>

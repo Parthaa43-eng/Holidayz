@@ -1,0 +1,135 @@
+<% layout("/layout/boilerplate") %>
+<link rel="stylesheet" href="/css/style.css">
+
+<body>
+    <div class="listing-card">
+        <h2 class="listing-title"><%= listing.title %></h2>
+        <div class="listing-image">
+            <img src="<%= listing.image.url %>" alt="Listing Image" class="detail-image">
+        </div>
+        <div class="listing-content">
+            <p> Owned by -- <i><b> <%=listing.owner.username %></b> </i></p> 
+            <p class="listing-description"><%= listing.description %></p>
+            <p class="listing-price">&#8377;<%= listing.price.toLocaleString("en-IN") %> -/ per night</p>
+            <p class="listing-location"><strong>Location:</strong> <%= listing.location %> <p class="listing-country"><%= listing.country %></p></p>
+            
+        </div>
+
+           <% if ( currUser && currUser._id.equals(listing.owner._id)) { %>
+            <a class="edit" href="/listings/<%= listing._id %>/edit">  Edit this Listing</a> <br><br>
+            <form class="delete"  action="/listings/<%= listing._id %>?_method=DELETE" method="POST" >
+                <button type="submit" >Delete Listing</button>     
+            </form>
+            <% } %>
+           
+        </div>
+
+      
+      <% if(listing.reviews.length > 0) { %>
+        <hr>
+        <% for (review of listing.reviews) { %>
+            <h3 class="mb-3 text-primary">All Reviews</h3>
+            <div class="card border-0">
+                <div class="card-body">
+                    <p class="card-text text-muted"><%= review.comment %></p>
+                    <p class="card-text">   
+                        <span class=" text-dark">⭐ <%= review.rating %></span>
+                    </p>
+                </div>
+                <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-dark">Delete</button>
+                </form>
+                
+            </div>
+        <% } %>
+     <%  } %>
+
+   
+
+<hr class="mt-4">
+        
+      <%  if(currUser) { %>
+            <div class="col-8 offcet-3" >
+                <h3>Give a review</h3>
+                <form action="/listings/<%=listing._id%>/reviews" method="POST" >
+                    <div class="mb-2 mt-3">
+                        <label for="rating" class="form-lable">Rating</label>
+                        <input type="range" class="form-range" min="0"   max="5" id="rating" name="review[rating]">
+
+                        
+                    </div>
+
+                    
+    
+                    <div class="mb-4 mt-3" >
+                        <label for="comment">Comment</label>
+                        <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+                    </div>
+                    <button class=" btn btn-outline-dark mb-4">Submit</button>
+                </form>
+            </div>
+       <% } %>
+        
+        <div>
+            <h2>You will be here </h2>
+        </div>
+       <div id="map">
+       
+       </div>
+
+       <script>
+        let mapToken = "<%=process.env.MAP_TOKEN %>";
+        const coordinate = <%- JSON.stringify(listing.geometry.coordinates) %>;
+        
+        console.log(coordinate); // Debugging: should print [longitude, latitude]
+        
+        mapboxgl.accessToken = mapToken;
+    
+        window.onload = () => {
+            const map = new mapboxgl.Map({
+                container: 'map',
+                zoom: 16.8,
+                center: coordinate, // Now properly formatted
+                pitch: 74,
+                bearing: 12.8,
+                hash: true,
+                style: 'mapbox://styles/mapbox/standard',
+                projection: 'globe'
+            });
+    
+            map.on('style.load', () => {
+                map.setConfigProperty('basemap', 'lightPreset', 'dusk');
+                const zoomBasedReveal = (value) => {
+                    return [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        11,
+                        0.0,
+                        13,
+                        value
+                    ];
+                };
+    
+                map.setSnow({
+                    density: zoomBasedReveal(0.85),
+                    intensity: 1.0,
+                    'center-thinning': 0.1,
+                    direction: [0, 50],
+                    opacity: 1.0,
+                    color: `#ffffff`,
+                    'flake-size': 0.71,
+                    vignette: zoomBasedReveal(0.3),
+                    'vignette-color': `#ffffff`
+                });
+            });
+    
+            const marker1 = new mapboxgl.Marker()
+                .setLngLat(coordinate)
+                .addTo(map);
+        };
+    </script>
+    
+
+    </div>
+</body>
