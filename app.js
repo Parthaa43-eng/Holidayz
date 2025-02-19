@@ -68,9 +68,7 @@ const sessionOption = {
 
 
 
-app.get("/", (req, res) => {
-  res.send("Hello!!!");
-});
+
 
 
 app.use(session(sessionOption))
