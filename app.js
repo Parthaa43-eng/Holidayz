@@ -69,7 +69,7 @@ const sessionOption = {
 
 
 app.get("/", (req, res) => {
-  res.render("listings/index.ejs"); 
+  res.redirect("/listings"); // Redirect to listings page
 });
 
 
