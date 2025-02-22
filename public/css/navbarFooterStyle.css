@@ -1,48 +1,189 @@
-/* --------------------------------------------- */
-/* Navbar Styles */
-/* --------------------------------------------- */
 
-/* General Navbar Styles */
+
+/* Body Font */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Navbar Container */
 .navbar {
-  height: 5rem;
-  background-color: aliceblue;
-  font-size: 18px; /* Increase overall navbar font size */
+  background-color: #ffffff; /* White background */
+  height: 120px;
+  padding: 1rem 0; /* Padding for top and bottom */
 }
 
-/* Navbar Brand Styling */
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  font-family: 'Arial', sans-serif;
-  text-decoration: none; /* Remove underline */
-  color: #333; /* Text color */
-  font-weight: bold;
-  padding: 10px 20px;
-}
-
-/* Navbar Brand Heading */
+/* Navbar Brand (Logo) */
 .navbar-brand h1 {
-  margin: 0;
-  font-size: 36px; /* Make brand heading bigger */
-  color: #007bff; /* Color for the text */
-  transition: color 0.3s ease;
+  font-size: 2rem; /* Larger font size for the brand */
+  font-weight: 700; /* Bold font weight */
+  color: rgb(255, 90, 95); /* Dark blue-gray color */
+  padding: 20px;
+  margin: 0; /* Remove default margin */
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
-/* Navbar Brand Hover Effect */
-.navbar-brand:hover h1 {
-  color: #0056b3;
+.navbar-brand h1:hover {
+  color: rgb(240, 84, 89);/* Light blue color on hover */
 }
+
+
 
 /* Navbar Links */
-.navbar-nav .nav-link {
-  font-size: 20px; /* Increase nav links size */
-  font-weight: bold; /* Make it more prominent */
+.navbar-nav {
+  display: flex;
+  align-items: center;
 }
 
-/* Navbar Navigation Links Hover Effect */
-.navbar-nav .nav-link:hover {
-  color: #0056b3 !important; /* Change text color on hover */
+.nav-item {
+  margin-left: 1.5rem; /* Space between nav items */
 }
+
+.nav-link {
+  font-size: 1.4rem; /* Standard font size */
+  font-weight: 100; /* Medium font weight */
+  color: black; /* Dark blue-gray color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.nav-link:hover {
+  color:rgb(240, 84, 89); /* Light blue color on hover */
+}
+
+
+
+/* Right-aligned Navbar Items */
+.ms-auto {
+  margin-left: auto; /* Push items to the right */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .navbar-nav {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .nav-item {
+    margin-left: 0; /* Remove left margin */
+    margin-bottom: 0.5rem; /* Add bottom margin for spacing */
+  }
+
+  .ms-auto {
+    margin-left: 0; /* Reset margin for smaller screens */
+  }
+}
+
+/* navbar searchbar styling --  */
+.navbar-searchbar {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  padding: 20px 20px; /* Adjust this for navbar height */
+}
+
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#searchbar {
+  width: 100%;
+  padding: 30px 20px 30px 25px; /* Adjusted padding to fit button inside */
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+
+#searchbar:focus {
+  border-color: rgb(240, 84, 89);
+  box-shadow: 0px 0px 10px rgba(240, 84, 89, 0.5);
+}
+
+input::placeholder {
+  font-size: 18px; /* Size badhane ke liye */
+  font-weight: bold; /* Bold karne ke liye (optional) */
+  color: gray; /* Color change karne ke liye */
+}
+input:focus::placeholder {
+  color: rgb(240, 84, 89);
+}
+
+
+button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px; /* Ensure button is big enough */
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Make it a circle */
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:focus {
+  outline: none; /* Default outline remove karne ke liye */
+}
+
+button:focus svg {
+  fill: rgb(240, 84, 89); /* SVG ka color change karega */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* --------------------------------------------- */
 /* Footer Styles */

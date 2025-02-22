@@ -1,9 +1,6 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-}
+
+ 
+
 
 .listing-container {
     display: grid;
@@ -15,16 +12,14 @@ body {
 }
 
 .listing {
-    background: #fff;
-    border-radius: 10px;
+    border-radius: 5%;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .listing:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+   
 }
 
 .listing-link {
@@ -33,10 +28,11 @@ body {
     color: inherit;
 }
 
-.listing-image {
+.listing img {
     width: 100%;
-    height: 180px;
+    height: 400px;
     object-fit: cover;
+    border-radius: 5%;
 }
 
 .listing-info {
@@ -63,24 +59,49 @@ body {
     margin: 5px 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    font-size: 18px; /* Increase overall body font size */
+.top-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px; /* Space between items */
+    justify-content: center; /* Center the items */
 }
+
+.image-item {
+    flex: 1 1 calc(20% - 10px); /* Adjust based on how many per row */
+    max-width: 80px; /* Optional, to limit size */
+}
+
+.image {
+    width: 60%; 
+    border-radius: 10px; /* Optional: Rounded corners */
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 h1 {
     text-align: center;
@@ -157,50 +178,73 @@ textarea.form-input {
 
 
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    margin: 0;
-    padding: 0;
-}
+
+/* --------------------Show.ejs styling -------------------- */
+
 
 .listing-card {
-    max-width: 800px;
+    max-width: 1400px;
     margin: 40px auto;
     background: #ffffff;
     border-radius: 10px;
     overflow: hidden;
 }
 
+/* Style the container div */
 .listing-image {
-    width: 100%;
-    height: 300px;
-    background-color:#ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%; /* Make the container take up the full width of its parent */
+    max-width: 700px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 10px; /* Add some padding around the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    border-radius: 30px; /* Round the corners of the container */
+    background-color: #f9f9f9; /* Add a light background color */
+    overflow: hidden; /* Ensure the image doesn't overflow the container */
 }
 
+/* Style the image inside the container */
 .detail-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    border-bottom: 2px solid #eee;
+    width: 100%; /* Make the image take up the full width of the container */
+    height: 500px; /* Maintain the aspect ratio of the image */
+    display: block; /* Remove any extra space below the image */
+    border-radius: 30px; /* Slightly round the corners of the image */
+    transition: transform 0.3s ease; /* Add a smooth hover effect */
+}
+
+.detail-image:hover {
+    transform: translateY(-5px);
 }
 
 .listing-content {
-    padding: 20px;
+    padding: 60px;
+    margin-left: 50px;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between; /* Pushes title left & owner info right */
+    align-items: center; /* Aligns items vertically */
+    padding: 12px 20px;
+    background: #ffffff; /* Clean white background */
 }
 
 .listing-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 80px;
+    font-size: 30px;
+    font-weight: 400;
+    color:#523333; /* Dark color for a premium look */
+    margin: 0;
+}
+
+.listing-owner {
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+    font-style: italic;
 }
 
 .listing-description {
-    font-size: 16px;
+    font-size: 18px;
     color: #555;
     margin-bottom: 20px;
 }
@@ -217,65 +261,164 @@ body {
     color: #7f8c8d;
 }
 
-.listing-actions {
+
+.amenities-container {
+    max-width: 700px; /* Adjust width as needed */
+    margin: auto;
+}
+
+.amenities-list {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-top: 1px solid #eee;
-}
-.edit {
-    color: white;
-    font-size: 16px;
-    background-color: #007bff;
-    text-decoration: none;
-    border: 1px solid black;
-    padding: 10px 20px;
-     border-radius: 5px;
-    font-weight: lighter;
-    transition: all 0.3s ease;
-
+    flex-wrap: wrap; /* Allows wrapping to the next line */
+    gap: 10px; /* Adds space between items */
+    list-style: none;
+    padding: 0;
 }
 
-.edit:hover {
-    background-color: #05478e;
-    transform: scale(1.05);
-}
-
-.delete {
-    display: inline-block;
-    margin: 10px 0;
-}
-
-.delete button {
-    background-color: #e74c3c;
-    color: white;
-    border: 1px solid #e74c3c;
-    padding: 10px 20px;
-    font-size: 16px;
+.amenities-list li {
+    flex: 1 1 calc(33.33% - 10px); /* 3 per row */
+    /* Use calc(25% - 10px) if you want 4 per row */
+    background: #f8f9fa;
+    padding: 8px 12px;
     border-radius: 5px;
+    border-left: 4px solid  #e71313;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Ensures responsiveness */
+@media (max-width: 600px) {
+    .amenities-list li {
+        flex: 1 1 calc(50% - 10px); /* 2 per row on smaller screens */
+    }
+}
+
+
+.owners-option{
+    margin-top: 2%;
+    margin-left: 100%;
+}
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Button */
+.dropdown-button {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.delete button:hover {
-    background-color: #0c0a09;
-    border-color: #c0392b;
+
+
+/* Dropdown Menu */
+.dropdown-menu {
     
+    position: absolute;
+    background-color: white;
+    width: 250px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 10;
+    padding: 10px 0;
+    
+    margin-top: 5px;
 }
 
-.delete button:focus {
-    outline: none;
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
+
+/* Dropdown Items */
+.dropdown-menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+/* List Items */
+.dropdown-menu li {
+    padding: 10px 15px;
+    text-align: left;
+    transition: background 0.3s ease;
+    list-style-type: none;
+}
+
+/* No background or hover effect for owner's option text */
+.dropdown-menu li.owner-option {
+    background: none !important;
+    pointer-events: none; /* Disable hover effect */
+}
+
+/* Edit Link */
+.dropdown-menu .edit {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    display: block;
+    padding: 10px;
+    transition: background 0.3s ease;
+    text-align: left; /* Align text to the left */
+}
+
+/* Delete Button */
+.delete-button {
+    color: red;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left; /* Align text to the left */
+    padding: 10px;
+    border: none;
+    background: none;
+    transition: background 0.3s ease;
+}
+
+/* Align Edit and Delete buttons properly */
+.dropdown-menu .edit,
+.dropdown-menu .delete-button {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add spacing between icon and text if needed */
+}
+
+
+
+
+
 
 .reviews-container {
-    max-width: 600px;
+    max-width: 300px;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    gap: 10px;
 }
 
 /* review card styling */
 .card {
-    
-    border-radius: 12px;
+    width: 280px; 
+    height: auto;
+    margin: 10px;
+    border: 2px solid black;
+    background-color: snow;
+    border-radius: 20px;
     transition: 0.3s;
 }
 
@@ -284,9 +427,196 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-body {
-    padding: 15px;
+
+
+.deleteReviewButton{
+    color: black;
+    background: none;
+    margin-bottom: 10px;
+    width: auto;
 }
+
+.deleteReviewButton:hover{
+    color: #e71313;
+
+}
+
+
+
+
+.host {
+    text-align: center; /* Center-align all content */
+    background: white; /* Light gray background */
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.host h1 {
+    font-size: 2rem;
+    color:#9329bd;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.host-image {
+    width: 150px; /* Make image smaller */
+    height: 150px;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Ensure it crops correctly */
+    border: 3px solid black; /* Optional border */
+    margin-bottom: 10px;
+}
+
+.host p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.fs-3, .fs-4 {
+    margin-left: 0 !important; /* Remove the extra left margin */
+    text-align: center; /* Center text */
+}
+
+
+/* give review container styling  */
+
+
+/* General Container Styling */
+.review-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+.heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+.label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Range Slider Styling */
+.range-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.range-slider:hover {
+    opacity: 1;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.range-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Textarea Styling */
+.textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.3s;
+}
+
+.textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit Button Styling */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .review-container {
+        padding: 15px;
+    }
+
+    .heading {
+        font-size: 20px;
+    }
+
+    .label {
+        font-size: 14px;
+    }
+
+    .textarea {
+        font-size: 12px;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+
+
+
+
+
+
 
 
 #map {
@@ -295,3 +625,9 @@ body {
     height: 500px;
     width : 700px;
 }
+
+
+
+
+
+/* -----------------upto here ----------------------- */

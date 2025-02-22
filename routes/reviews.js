@@ -4,7 +4,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const {reviewSchema} = require("../schema.js")
 const Review = require("../models/review.js")
 
-const {isLoggedIn}  = require("../middleware.js")
+const {isLoggedIn , isReviewAuthor}  = require("../middleware.js")
 
 const reviewController = require("../controllers/reviews.js")
 
@@ -20,6 +20,6 @@ const validateReview = (req,res,next) =>{
   }
 
 router.post("/" ,validateReview , isLoggedIn ,  wrapAsync (reviewController.addReview))  //Reviews
-router.delete("/:reviewId", isLoggedIn ,  wrapAsync(reviewController.destroyReview));//Delete reviews route  
-
+router.delete("/:reviewId", isLoggedIn , isReviewAuthor ,  wrapAsync(reviewController.destroyReview));//Delete reviews route  
+ 
 module.exports = router;

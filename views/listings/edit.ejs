@@ -27,6 +27,58 @@
         <input type="text" id="country" name="listing[country]" value="<%= listing.country %>" placeholder="Country" class="form-input">
         <br>
 
+        <fieldset>
+            <legend>Select Amenities:</legend>
+        
+            <input type="checkbox" name="listing[amenities]" value="WiFi"
+                <% if (listing.amenities.includes("WiFi")) { %> checked <% } %> > WiFi
+        
+            <input type="checkbox" name="listing[amenities]" value="Parking"
+                <% if (listing.amenities.includes("Parking")) { %> checked <% } %> > Parking
+        
+            <input type="checkbox" name="listing[amenities]" value="Swimming Pool"
+                <% if (listing.amenities.includes("Swimming Pool")) { %> checked <% } %> > Swimming Pool
+        
+            <input type="checkbox" name="listing[amenities]" value="Gym"
+                <% if (listing.amenities.includes("Gym")) { %> checked <% } %> > Gym
+        
+            <input type="checkbox" name="listing[amenities]" value="Air Conditioning"
+                <% if (listing.amenities.includes("Air Conditioning")) { %> checked <% } %> > Air Conditioning
+        
+            <input type="checkbox" name="listing[amenities]" value="Heating"
+                <% if (listing.amenities.includes("Heating")) { %> checked <% } %> > Heating
+        
+            <input type="checkbox" name="listing[amenities]" value="Kitchen"
+                <% if (listing.amenities.includes("Kitchen")) { %> checked <% } %> > Kitchen
+        
+            <input type="checkbox" name="listing[amenities]" value="Washer"
+                <% if (listing.amenities.includes("Washer")) { %> checked <% } %> > Washer
+        
+            <input type="checkbox" name="listing[amenities]" value="Dryer"
+                <% if (listing.amenities.includes("Dryer")) { %> checked <% } %> > Dryer
+        
+            <input type="checkbox" name="listing[amenities]" value="TV"
+                <% if (listing.amenities.includes("TV")) { %> checked <% } %> > TV
+        
+            <input type="checkbox" name="listing[amenities]" value="Refrigerator"
+                <% if (listing.amenities.includes("Refrigerator")) { %> checked <% } %> > Refrigerator
+        
+            <input type="checkbox" name="listing[amenities]" value="Microwave"
+                <% if (listing.amenities.includes("Microwave")) { %> checked <% } %> > Microwave
+        
+            <input type="checkbox" name="listing[amenities]" value="Fireplace"
+                <% if (listing.amenities.includes("Fireplace")) { %> checked <% } %> > Fireplace
+        
+            <input type="checkbox" name="listing[amenities]" value="Balcony"
+                <% if (listing.amenities.includes("Balcony")) { %> checked <% } %> > Balcony
+        
+            <input type="checkbox" name="listing[amenities]" value="Pet Friendly"
+                <% if (listing.amenities.includes("Pet Friendly")) { %> checked <% } %> > Pet Friendly
+        
+        </fieldset>
+        
+        
+
         <button type="submit" class="form-button">Update</button>
     </form>
 </body>

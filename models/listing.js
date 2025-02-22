@@ -12,6 +12,7 @@ const listingSchema = new mongoose.Schema({
     price : Number,
     location : String,
     country : String,
+    amenities: [String],   
     reviews : [
         {
             type : Schema.Types.ObjectId,

@@ -18,9 +18,12 @@ const LocalStrategy = require("passport-local")
 const User = require("./models/user.js")
 const MongoStore = require('connect-mongo');
 
+
+
 const listingRouter = require("./routes/listing.js")
 const reviewRouter = require("./routes/reviews.js")
 const userRouter = require("./routes/user.js")
+
 
 
 app.set("view engine", "ejs");
@@ -48,7 +51,7 @@ main()
       secret : process.env.SECRET,
     },
     touchAfter : 24*3600,
-  })
+  }) 
 
   store.on("error" ,() =>{
     console.log("Error in mongo session store" , err)
@@ -65,6 +68,9 @@ const sessionOption = {
     httpOnlu : true,
   }
 }
+
+
+
 
 
 

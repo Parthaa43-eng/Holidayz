@@ -3,17 +3,60 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <body>
+    
+    <div class="top-images d-flex flex-wrap p-4">
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg" alt="Home"></a>
+            <p class="p-2">Beach</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/im/pictures/mediaverse/category_icon/original/3e5243c8-4d15-4c6b-97e3-7ba2bb7bb880.png" alt="Home"></a>
+            <p class="p-2">Icons</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="Home"></a>
+            <p class="p-2">Amazing views</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg" alt="Home"></a>
+            <p class="p-2">Amazing pools</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg" alt="Home"></a>
+            <p class="p-2">National parks</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="Home"></a>
+            <p class="p-2">OMG</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg" alt="Home"></a>
+            <p class="p-2">Farms</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg" alt="Home"></a>
+            <p class="p-2">Beachfronts</p>
+        </div>
+        <div class="image-item text-center">
+            <a href="#"><img class="image" src="https://a0.muscache.com/pictures/78ba8486-6ba6-4a43-a56d-f556189193da.jpg" alt="Home"></a>
+            <p class="p-2">Cabins</p>
+        </div>
+       
+        
+       
+    </div>
+
     <div class="listing-container">
         <% for (let listing of allListings) { %>
             <div class="listing">
                 <a href="/listings/<%= listing._id %>" class="listing-link">
-                    <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="listing-image">
+                    <img class="image"  src="<%= listing.image.url %>" alt="<%= listing.title %>" >
                     <div class="listing-info">
                         <h3 class="listing-title"><%= listing.title %></h3>
-                        <p class="listing-price">&#8377;<%= listing.price %></p>
-                        <p class="listing-location"><%= listing.location %></p>
+                        <p class="listing-price">&#8377;<%= listing.price.toLocaleString("en-IN") %> -/ per night</p>
+                        <p class="listing-location"><%= listing.location %> , <%= listing.country %> </p>
                     </div>
-                </a>
+                </a>    
             </div>
         <% } %>
     </div>

@@ -7,8 +7,9 @@ const geocodingClient = mbxGeocoding({ accessToken:mapToken });
 
 
 module.exports.index = async (req, res) => {
+
   const allListings = await Listing.find({});
-  res.render("./listings/index.ejs", { allListings });
+  res.render("./listings/index.ejs", { allListings  });
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -27,7 +28,7 @@ module.exports.showListings = async (req, res, next) => {
     return;
   }
 
-  res.render("./listings/show.ejs", { listing });
+  res.render("./listings/show.ejs", { listing , currUser: req.user });
 };
 
 module.exports.createListing = async (req, res, next) => {
@@ -40,6 +41,7 @@ module.exports.createListing = async (req, res, next) => {
   let url = req.file.path;
   let filename = req.file.filename; 
   const newListing = new Listing(req.body.listing);
+  newListing.amenities = req.body.amenities || [] ;
   newListing.owner = req.user._id;
   newListing.image = {url , filename};
 
@@ -82,11 +84,12 @@ module.exports.updateListing = async (req, res, next) => {
   }
 
   const updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true });
-
+  updatedListing.amenities = req.body.amenities || [];
   if(typeof req.file !== 'undefined') {
     let url = req.file.path;
     let filename = req.file.filename;
     updatedListing.image = {url , filename}
+
     await updatedListing.save();
   }
 

@@ -2,73 +2,145 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <body>
-    <div class="listing-card">
-        <h2 class="listing-title"><%= listing.title %></h2>
+
+    <div class="owners-option">
+        <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+            <div class="dropdown">
+                <button class="dropdown-button" onclick="toggleDropdown()">Owners Options</button>
+                <div class="dropdown-menu">
+                    
+                    <ul>
+                        <li><a class="edit" href="/listings/<%= listing._id %>/edit">Edit this Listing</a></li>
+                        <li><form class="delete-form" action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="delete-button">Delete Listing</button>
+                        </form></li>
+                    </ul>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+
+
+    <div class="listing-card"> 
+        
         <div class="listing-image">
             <img src="<%= listing.image.url %>" alt="Listing Image" class="detail-image">
         </div>
-        <div class="listing-content">
-            <p> Owned by -- <i><b> <%=listing.owner.username %></b> </i></p> 
+        
+            
+       
+        <div class="listing-content">    
+            <h2 class="listing-title"  style="display: inline-block;" ><%= listing.title %></h2>       
+            <p class="listing-owner" >  Owned by -- <i><b> <%=listing.owner.username %></b> </i></p>
             <p class="listing-description"><%= listing.description %></p>
             <p class="listing-price">&#8377;<%= listing.price.toLocaleString("en-IN") %> -/ per night</p>
-            <p class="listing-location"><strong>Location:</strong> <%= listing.location %> <p class="listing-country"><%= listing.country %></p></p>
+            <p style="display: inline-block;" class="listing-location"><strong>Location:</strong>  <%= listing.location %> , <p style="display: inline-block;" class="listing-country"><%= listing.country %></p></p>
             
+            <% if(listing.amenities && listing.amenities.length > 0){ %>
+                <h2>Amenities:</h2>
+                <div class="amenities-container">
+                <ul class="amenities-list">
+                    <% listing.amenities.forEach(amenity => { %>
+                        <li><%= amenity %></li>
+                    <% }); %>
+                </ul>
+             <% } %>
         </div>
 
-           <% if ( currUser && currUser._id.equals(listing.owner._id)) { %>
-            <a class="edit" href="/listings/<%= listing._id %>/edit">  Edit this Listing</a> <br><br>
-            <form class="delete"  action="/listings/<%= listing._id %>?_method=DELETE" method="POST" >
-                <button type="submit" >Delete Listing</button>     
-            </form>
-            <% } %>
            
-        </div>
+           
+        
 
-      
-      <% if(listing.reviews.length > 0) { %>
-        <hr>
-        <% for (review of listing.reviews) { %>
-            <h3 class="mb-3 text-primary">All Reviews</h3>
-            <div class="card border-0">
-                <div class="card-body">
-                    <p class="card-text text-muted"><%= review.comment %></p>
-                    <p class="card-text">   
-                        <span class=" text-dark">⭐ <%= review.rating %></span>
-                    </p>
+        <div class="review-contanainer p-5">
+            <div class="row">
+                <div class="col-6">
+                    <% if(listing.reviews.length > 0) { %>
+                        <h3 class="mb-3" style="color: #e71313;">All Reviews</h3>
+                        
+                        <% for (review of listing.reviews) { %>
+                           
+                            <div class="card ">
+                                <div class="card-body">
+                                    <p>@<%= review.author.username %></p>
+                                    <p><%= new Date(review.createdAt).toLocaleDateString("en-GB") %></p>
+                                    <p class="card-text text-muted"><%= review.comment %></p>
+                                    <p class="card-text">   
+                                        <span class=" text-dark">⭐ <%= review.rating %></span>
+                                    </p>
+                    
+                                   
+                                   
+                                        <!-- <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                                            <button class="deleteReviewButton">Delete Review</button>
+                                        </form> -->
+                                    
+                                        <% if (review.author && currUser && review.author._id.toString() === currUser._id.toString()) { %>
+                                            <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                                                <button class="deleteReviewButton">Delete Review</button>
+                                            </form>
+                                        <% } %>
+                                        
+                                    
+                                    
+                                </div>
+                                
+                                
+                                
+                            </div>
+                        <% } %>
+                     <%  } %>
                 </div>
-                <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-sm btn-dark">Delete</button>
-                </form>
+                <div class="col-6 mt-5">
+                    <div class="host">
+                        <h1>Meet Your <b> Holidays</b> Host</h1>
+                        <img class="host-image" src="https://images.unsplash.com/photo-1608734265656-f035d3e7bcbf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fA%3D%3D" alt="Host image">
+                        <p class="fs-3">Host: <%= listing.owner.username %></p>
+                        <% if(listing.reviews.length > 0) { %>
+                            <p class="fs-3"><%= listing.reviews.length %> reviews</p>
+                        <% } %>
+                        <p class="fs-4"><%= listing.location %>, <%= listing.country %></p>
+                        <p><%= Math.floor(Math.random() * 10) + 1 %>+ years of hosting</p>
+
+                    </div>
+                </div>
                 
             </div>
-        <% } %>
-     <%  } %>
+        </div>
+        
+
+
+  
 
    
 
 <hr class="mt-4">
         
-      <%  if(currUser) { %>
-            <div class="col-8 offcet-3" >
-                <h3>Give a review</h3>
-                <form action="/listings/<%=listing._id%>/reviews" method="POST" >
-                    <div class="mb-2 mt-3">
-                        <label for="rating" class="form-lable">Rating</label>
-                        <input type="range" class="form-range" min="0"   max="5" id="rating" name="review[rating]">
-
-                        
-                    </div>
-
-                    
-    
-                    <div class="mb-4 mt-3" >
-                        <label for="comment">Comment</label>
-                        <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
-                    </div>
-                    <button class=" btn btn-outline-dark mb-4">Submit</button>
-                </form>
+<% if(currUser) { %>
+    <div class="review-container">
+        <h3 class="heading">Give a Review</h3>
+        <form action="/listings/<%=listing._id%>/reviews" method="POST">
+            
+            <!-- Rating -->
+            <div class="form-group">
+                <label for="rating" class="label">Rating</label>
+                <input type="range" class="range-slider" min="0" max="5" id="rating" name="review[rating]">
+                
             </div>
-       <% } %>
+
+            <!-- Comment -->
+            <div class="form-group">
+                <label for="comment" class="label">Comment</label>
+                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="textarea" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn">Submit</button>
+        </form>
+    </div>
+<% } %>
+
+
         
         <div>
             <h2>You will be here </h2>
@@ -79,7 +151,7 @@
 
        <script>
         let mapToken = "<%=process.env.MAP_TOKEN %>";
-        const coordinate = <%- JSON.stringify(listing.geometry.coordinates) %>;
+        const coordinate = <%- JSON.stringify(listing.geometry.coordinates) %> 
         
         console.log(coordinate); // Debugging: should print [longitude, latitude]
         
@@ -128,8 +200,25 @@
                 .setLngLat(coordinate)
                 .addTo(map);
         };
+
+
+        function toggleDropdown() {
+         document.querySelector(".dropdown").classList.toggle("active");
+}
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function(event) {
+                let dropdown = document.querySelector(".dropdown");
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove("active");
+                }
+            });
     </script>
     
 
     </div>
 </body>
+
+
+<!--     
+ -->
