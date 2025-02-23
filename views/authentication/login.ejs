@@ -1,23 +1,38 @@
 <% layout('/layout/boilerplate') %>
 <link rel="stylesheet" href="/css/authStyling.css">
+
 <body>
-    <h1>Login to Holidayz</h1>
-    <form action="/login" method="POST" >
+    <div class="auth-container">
+        <div class="row">
+            <div class="col-6 welcomeMessage">
+                <h1>Welcome Back to Holidayz!</h1>
+                <h2>We missed you! Log in to continue your journey.</h2>
+            </div>
+            <div class="col-6 authForm">
+                <h1>Login to Your Account</h1>
+                <form action="/login" method="POST" class="auth-form needs-validation" novalidate>
+                    
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter Username" class="form-input" required />
+                        <div class="invalid-feedback">Please enter your username</div>
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
 
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter Username" class="form-input" required />
-            
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter password" class="form-input" required />
+                        <div class="invalid-feedback">Please enter your password</div>
+                        <div class="valid-feedback">Nice!</div>
+                    </div>
+
+                    <a href="/signup">Don't have an account? Sign Up</a>
+
+                    <button type="submit" class="form-button">Login</button>
+                </form>
+            </div>
         </div>
-
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" class="form-input" required />
-            
-        </div>
-
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+    </div>
 </body>
 
 <script>

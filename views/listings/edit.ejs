@@ -1,84 +1,68 @@
-<% layout("/layout/boilerplate") %>
+<% layout('/layout/boilerplate') %>
 <link rel="stylesheet" href="/css/style.css">
+
 <body>
-    <h1>Edit this Listing</h1>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="listing-form" enctype="multipart/form-data">
-        <label for="title" class="form-label">Title:</label>
-        <input type="text" id="title" name="listing[title]" value="<%= listing.title %>" placeholder="Title" class="form-input">
-        <br>
-
-        <label for="description" class="form-label">Description:</label>
-        <textarea id="description" name="listing[description]" placeholder="Description" class="form-input"><%= listing.description %></textarea>
-        <br>
-
-        <label for="image" class="form-label">Upload new image</label>
-        <input type="file" id="image" name="listing[image]"  class="form-input">
-        <br>
-
-        <label for="price" class="form-label">Price:</label>
-        <input type="number" id="price" name="listing[price]" value="<%= listing.price %>" placeholder="Price" class="form-input">
-        <br>
-
-        <label for="location" class="form-label">Location:</label>
-        <input type="text" id="location" name="listing[location]" value="<%= listing.location %>" placeholder="Location" class="form-input">
-        <br>
-
-        <label for="country" class="form-label">Country:</label>
-        <input type="text" id="country" name="listing[country]" value="<%= listing.country %>" placeholder="Country" class="form-input">
-        <br>
-
-        <fieldset>
-            <legend>Select Amenities:</legend>
-        
-            <input type="checkbox" name="listing[amenities]" value="WiFi"
-                <% if (listing.amenities.includes("WiFi")) { %> checked <% } %> > WiFi
-        
-            <input type="checkbox" name="listing[amenities]" value="Parking"
-                <% if (listing.amenities.includes("Parking")) { %> checked <% } %> > Parking
-        
-            <input type="checkbox" name="listing[amenities]" value="Swimming Pool"
-                <% if (listing.amenities.includes("Swimming Pool")) { %> checked <% } %> > Swimming Pool
-        
-            <input type="checkbox" name="listing[amenities]" value="Gym"
-                <% if (listing.amenities.includes("Gym")) { %> checked <% } %> > Gym
-        
-            <input type="checkbox" name="listing[amenities]" value="Air Conditioning"
-                <% if (listing.amenities.includes("Air Conditioning")) { %> checked <% } %> > Air Conditioning
-        
-            <input type="checkbox" name="listing[amenities]" value="Heating"
-                <% if (listing.amenities.includes("Heating")) { %> checked <% } %> > Heating
-        
-            <input type="checkbox" name="listing[amenities]" value="Kitchen"
-                <% if (listing.amenities.includes("Kitchen")) { %> checked <% } %> > Kitchen
-        
-            <input type="checkbox" name="listing[amenities]" value="Washer"
-                <% if (listing.amenities.includes("Washer")) { %> checked <% } %> > Washer
-        
-            <input type="checkbox" name="listing[amenities]" value="Dryer"
-                <% if (listing.amenities.includes("Dryer")) { %> checked <% } %> > Dryer
-        
-            <input type="checkbox" name="listing[amenities]" value="TV"
-                <% if (listing.amenities.includes("TV")) { %> checked <% } %> > TV
-        
-            <input type="checkbox" name="listing[amenities]" value="Refrigerator"
-                <% if (listing.amenities.includes("Refrigerator")) { %> checked <% } %> > Refrigerator
-        
-            <input type="checkbox" name="listing[amenities]" value="Microwave"
-                <% if (listing.amenities.includes("Microwave")) { %> checked <% } %> > Microwave
-        
-            <input type="checkbox" name="listing[amenities]" value="Fireplace"
-                <% if (listing.amenities.includes("Fireplace")) { %> checked <% } %> > Fireplace
-        
-            <input type="checkbox" name="listing[amenities]" value="Balcony"
-                <% if (listing.amenities.includes("Balcony")) { %> checked <% } %> > Balcony
-        
-            <input type="checkbox" name="listing[amenities]" value="Pet Friendly"
-                <% if (listing.amenities.includes("Pet Friendly")) { %> checked <% } %> > Pet Friendly
-        
-        </fieldset>
-        
-        
-
-        <button type="submit" class="form-button">Update</button>
-    </form>
+    
+    <div class="newForm-container">
+        <div class="row">
+            <div class="col-6 welcomeMessage">
+                <h1>Welcome to Holidays!</h1>
+                <h2>Update your getaway details</h2>
+                <h3>Make vacations unforgettable!</h3>
+            </div>
+            <div class="col-6 newForm">
+                <h1>Edit Your Listing</h1>
+                <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="listing-form needs-validation" novalidate enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title:</label>
+                        <input type="text" id="title" name="listing[title]" value="<%= listing.title %>" placeholder="Enter Title" class="form-input" required />
+                        <div class="invalid-feedback">Please enter a title.</div>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea id="description" name="listing[description]" placeholder="Enter description" class="form-input" required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">Please enter a description.</div>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price:</label>
+                        <input type="number" id="price" name="listing[price]" value="<%= listing.price %>" placeholder="Enter Price" class="form-input" required />
+                        <div class="invalid-feedback">Please enter a valid price.</div>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload new image</label>
+                        <input type="file" id="image" name="listing[image]" class="form-input">            
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location:</label>
+                        <input type="text" id="location" name="listing[location]" value="<%= listing.location %>" placeholder="Enter Location" class="form-input" required />
+                        <div class="invalid-feedback">Please enter a location.</div>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Country:</label>
+                        <input type="text" id="country" name="listing[country]" value="<%= listing.country %>" placeholder="Enter Country" class="form-input" required />
+                        <div class="invalid-feedback">Please enter a country.</div>
+                    </div>
+            
+                    <fieldset class="amenities-section">
+                        <legend>Select Amenities:</legend>
+                        <div class="amenities-grid">
+                            <% ["WiFi", "Parking", "Swimming Pool", "Gym", "Air Conditioning", "Heating", "Kitchen", "Washer", "Dryer", "TV", "Refrigerator", "Microwave", "Fireplace", "Balcony", "Pet Friendly"].forEach(amenity => { %>
+                                <label>
+                                    <input type="checkbox" name="listing[amenities]" value="<%= amenity %>" 
+                                        <% if (listing.amenities.includes(amenity)) { %> checked <% } %> > <%= amenity %>
+                                </label>
+                            <% }) %>
+                        </div>
+                    </fieldset>
+            
+                    <button type="submit" class="form-button">Update Listing</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>

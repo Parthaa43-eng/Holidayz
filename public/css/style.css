@@ -1,6 +1,4 @@
-
- 
-
+/* Index page styling */
 
 .listing-container {
     display: grid;
@@ -76,106 +74,6 @@
     border-radius: 10px; /* Optional: Rounded corners */
     transition: transform 0.3s ease-in-out;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-top: 40px;
-    font-size: 36px; /* Make heading bigger */
-}
-
-.listing-form {
-    background: #fff;
-    padding: 40px; /* Increase padding */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 700px; /* Slightly wider form */
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-label {
-    font-size: 20px; /* Increase label size */
-    color: #333;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.form-input {
-    font-size: 18px; /* Increase input font size */
-    padding: 12px; /* Increase padding */
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s;
-    width: 100%;
-}
-
-.form-input:focus {
-    border-color: #007bff;
-}
-
-textarea.form-input {
-    height: 120px; /* Make textarea slightly taller */
-    resize: vertical;
-}
-
-.form-button {
-    padding: 14px 24px; /* Make button bigger */
-    font-size: 18px; /* Bigger font */
-    background-color: #348cea;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
-    font-weight: bold;
-}
-
-.form-button:hover {
-    background-color: #1860ad;
-}
-
-.form-button:active {
-    background-color: #1860ad;
-}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -295,112 +193,59 @@ textarea.form-input {
 }
 
 
-.owners-option{
-    margin-top: 2%;
-    margin-left: 100%;
+.owners-option {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
 }
 
-/* Dropdown Container */
-.dropdown {
-    position: relative;
+.owners-option ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.owners-option li {
+    margin: 10px 0;
+}
+
+.owners-option a.edit {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-left: 1000px;
+    margin-bottom: 15px;
+    background: #1db129;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.owners-option a.edit:hover {
+    background: #0e7617;
+}
+
+.owners-option .delete-form {
     display: inline-block;
 }
 
-/* Dropdown Button */
-.dropdown-button {
-    height: 150px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: black;
-    padding: 12px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-
-
-/* Dropdown Menu */
-.dropdown-menu {
-    
-    position: absolute;
-    background-color: white;
-    width: 250px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    z-index: 10;
-    padding: 10px 0;
-    
-    margin-top: 5px;
-}
-
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* Dropdown Items */
-.dropdown-menu a {
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-    transition: background 0.3s ease;
-}
-
-/* List Items */
-.dropdown-menu li {
+.owners-option .delete-button {
+    width: 180px;
     padding: 10px 15px;
-    text-align: left;
-    transition: background 0.3s ease;
-    list-style-type: none;
-}
-
-/* No background or hover effect for owner's option text */
-.dropdown-menu li.owner-option {
-    background: none !important;
-    pointer-events: none; /* Disable hover effect */
-}
-
-/* Edit Link */
-.dropdown-menu .edit {
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-    display: block;
-    padding: 10px;
-    transition: background 0.3s ease;
-    text-align: left; /* Align text to the left */
-}
-
-/* Delete Button */
-.delete-button {
-    color: red;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%;
-    text-align: left; /* Align text to the left */
-    padding: 10px;
+    height: 50px;
+    background: #dc3545;
+    color: white;
     border: none;
-    background: none;
-    transition: background 0.3s ease;
+    border-radius: 5px;
+    margin-left: 700px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Align Edit and Delete buttons properly */
-.dropdown-menu .edit,
-.dropdown-menu .delete-button {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Add spacing between icon and text if needed */
+.owners-option .delete-button:hover {
+    background: #a71d2a;
 }
-
-
-
-
-
 
 .reviews-container {
     max-width: 300px;
@@ -441,9 +286,6 @@ textarea.form-input {
 
 }
 
-
-
-
 .host {
     text-align: center; /* Center-align all content */
     background: white; /* Light gray background */
@@ -479,155 +321,303 @@ textarea.form-input {
 }
 
 
-/* give review container styling  */
 
 
-/* General Container Styling */
 .review-container {
-    max-width: 600px;
+    max-width: 800px;
+    height: 300px;
     margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
+    
+    padding: 40px;
+    background: none;
     border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 120px;
 }
 
-/* Heading Styling */
 .heading {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
     text-align: center;
+    font-size: 1.9rem;
+    color: #a94848;
+    margin-bottom: 15px;
 }
 
-/* Form Group Styling */
-.form-group {
-    margin-bottom: 20px;
+
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
 }
 
-/* Label Styling */
-.label {
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 8px;
+.rating-stars input {
+    display: none;
 }
 
-/* Range Slider Styling */
-.range-slider {
-    width: 100%;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 8px;
-    background: #ddd;
-    border-radius: 5px;
-    outline: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-}
-
-.range-slider:hover {
-    opacity: 1;
-}
-
-.range-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #007bff;
-    border-radius: 50%;
+.rating-stars label {
+    font-size: 2rem;
+    color: #ccc;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
-.range-slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #007bff;
-    border-radius: 50%;
-    cursor: pointer;
+.rating-stars input:checked ~ label {
+    color: #ffcc00;
 }
 
-/* Textarea Styling */
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: #ffcc00;
+}
+
+
+
 .textarea {
     width: 100%;
     padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
+    margin-left: 100px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    resize: vertical;
-    min-height: 100px;
-    transition: border-color 0.3s;
+    font-size: 1rem;
+   
 }
-
-.textarea:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Submit Button Styling */
-.submit-btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.submit-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .review-container {
-        padding: 15px;
-    }
-
-    .heading {
-        font-size: 20px;
-    }
-
-    .label {
-        font-size: 14px;
-    }
-
-    .textarea {
-        font-size: 12px;
-    }
-
-    .submit-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
-}
-
-
-
-
-
-
-
 
 
 #map {
     margin: auto;
+    margin-top: 80px;
     margin-bottom: 50px;
     height: 500px;
+    border: 2px solid black;
+    border-radius: 10%;
     width : 700px;
+}
+
+
+/* New listing form styling */
+
+.newForm-container {
+    width: 1200px;
+    height: 1300px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.col-6 {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+
+.welcomeMessage {
+    text-align: center;
+    padding: 20px;
+    margin-top: 300px;
+    border-radius: 10px;
+}
+
+.welcomeMessage h1,
+.welcomeMessage h2,
+.welcomeMessage h3 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.welcomeMessage h1 {
+    font-size: 42px;
+    color: #e71313;
+    animation-delay: 0.3s;
+}
+
+.welcomeMessage h2 {
+    font-size: 30px;
+    color: #333;
+    font-weight: 500;
+    animation-delay: 0.6s;
+}
+
+.welcomeMessage h3 {
+    font-size: 18px;
+    color: #28a745;
+    font-weight: 600;
+    animation-delay: 0.9s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.newForm {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.newForm h1 {
+    font-size: 32px;
+    color: #e71313;
+    margin-bottom: 20px;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.listing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-input {
+    width: 500px;
+    height: 55px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+textarea.form-input {
+    height: 100px;
+    resize: none;
+}
+
+.form-input:focus {
+    border-color: #e71313;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+
+
+/* Submit Button */
+.form-button {
+    width: 100%;
+    padding: 12px;
+    background: #e71313;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin-top: 540px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.9s;
+}
+
+.form-button:hover {
+    background: #d11111;
 }
 
 
 
 
 
-/* -----------------upto here ----------------------- */
+
+.amenities-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.amenities-grid label {
+    flex: 1 1 calc(33.333% - 10px); /* Ensures 3 per row */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+
+
+.amenities-grid input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #e71313;
+}
+
+/* Responsive: 2 per row on small screens */
+@media (max-width: 600px) {
+    .amenities-grid label {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+
+/* Fade-in animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .newForm {
+        width: 90%;
+    }
+}
+
+

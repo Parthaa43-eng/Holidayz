@@ -2,8 +2,6 @@ if( process.env.NODE_ENV!= "production"){
   require("dotenv").config();
 }
 
-
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -108,6 +106,7 @@ app.use("/" , userRouter);
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not found"));
 });
+
 
 // Global Error Handler Middleware
 app.use((err, req, res, next) => {

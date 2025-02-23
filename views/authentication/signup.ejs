@@ -1,41 +1,55 @@
-<% layout('/layout/boilerplate') %>
-<link rel="stylesheet" href="/css/authStyling.css">
-<body>
-    <h1>Signup</h1>
-    <form action="/signup" method="POST" class="needs-validation" novalidate> 
-        <div class="mb-3">
-            <label for="username" class="form-label">User name</label>
-            <input type="text" id="username" name="username" placeholder="Enter Username" class="form-input" required />
-            <div class="invalid-feedback">Please enter your name</div>
-            <div class="valid-feedback">Looks good!</div>
+    <% layout('/layout/boilerplate') %>
+    <link rel="stylesheet" href="/css/authStyling.css">
+
+    <body>
+        <div class="auth-container">
+            <div class="row">
+                <div class="col-6 welcomeMessage">
+                    <h1>Welcome To Holidayz!</h1>
+                    <h2>Join us and explore a world of possibilities</h2>
+                    <h3>Your journey starts here.</h3>
+                </div>
+                <div class="col-6 authForm">
+                    <h1>Create Your Account</h1>
+                    <form action="/signup" method="POST" class="auth-form needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter Username" class="form-input" required />
+                            <div class="invalid-feedback">Please enter your name</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter email" class="form-input" required />
+                            <div class="invalid-feedback">Please enter a valid email</div>
+                            <div class="valid-feedback">Nice!</div>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter password" class="form-input" required minlength="6" />
+                            <div class="invalid-feedback">Please enter at least 6 characters</div>
+                            <div class="valid-feedback">Ok fine!</div>
+                        </div>
+
+                        <a href="/login">Already have a accout? Login</a>
+        
+                        <button type="submit" class="form-button">Sign Up</button>
+                    </form>
+                </div>
+            </div>
         </div>
+    </body>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter email" class="form-input" required />
-            <div class="invalid-feedback">Please enter a valid email</div>
-            <div class="valid-feedback">Nice!</div>
-        </div>
-
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" class="form-input" required minlength="6" />
-            <div class="invalid-feedback">Please enter at least 6 characters</div>
-            <div class="valid-feedback">Ok fine!</div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Signup</button>
-    </form>
-</body>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelector("form").addEventListener("submit", function(event) {
-            if (!this.checkValidity()) {
-                event.preventDefault(); 
-                event.stopPropagation();
-            }
-            this.classList.add("was-validated");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("form").addEventListener("submit", function(event) {
+                if (!this.checkValidity()) {
+                    event.preventDefault(); 
+                    event.stopPropagation();
+                }
+                this.classList.add("was-validated");
+            });
         });
-    });
-</script>
+    </script>

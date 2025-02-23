@@ -27,6 +27,10 @@ module.exports.showListings = async (req, res, next) => {
     res.redirect("/listings");
     return;
   }
+//   console.log("Current User ID:", req.user._id);
+// console.log("Admin ID from .env:", process.env.ADMINID);
+// console.log("User ID as String:", req.user._id.toString());
+
 
   res.render("./listings/show.ejs", { listing , currUser: req.user });
 };
@@ -61,12 +65,15 @@ module.exports.editListing = async (req, res, next) => {
     return res.redirect("/listings");
   }
 
-  if (!listing.owner.equals(req.user._id)) {
-    req.flash("error", "You do not have permission to edit this listing!");
-    return res.redirect(`/listings/${id}`);
+  if (listing.owner.equals(req.user._id) || req.user._id.toString() === process.env.ADMINID) {
+    res.render("./listings/edit.ejs", { listing });
+    
   }
-
-  res.render("./listings/edit.ejs", { listing });
+ else{
+  req.flash("error", "You do not have permission to edit this listing!");
+    return res.redirect(`/listings/${id}`);
+ }
+ 
 };
 
 module.exports.updateListing = async (req, res, next) => {
@@ -78,28 +85,26 @@ module.exports.updateListing = async (req, res, next) => {
     return res.redirect("/listings");
   }
 
-  if (!listing.owner.equals(req.user._id)) {
+  if (listing.owner.equals(req.user._id) ||  req.user._id.toString() === process.env.ADMINID) {
+    const updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true });
+    updatedListing.amenities = req.body.amenities || [];
+    if(typeof req.file !== 'undefined') {
+      let url = req.file.path;
+      let filename = req.file.filename;
+      updatedListing.image = {url , filename}
+      console.log(process.env.ADMIN);
+      await updatedListing.save();
+    }
+  
+   
+    req.flash("success", "Listing updated successfully!");
+    res.redirect(`/listings/${id}`);
+  }
+
+  else{
     req.flash("error", "You do not have permission to update this listing!");
     return res.redirect(`/listings/${id}`);
   }
-
-  const updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true });
-  updatedListing.amenities = req.body.amenities || [];
-  if(typeof req.file !== 'undefined') {
-    let url = req.file.path;
-    let filename = req.file.filename;
-    updatedListing.image = {url , filename}
-
-    await updatedListing.save();
-  }
-
-  
-
-
-
- 
-  req.flash("success", "Listing updated successfully!");
-  res.redirect(`/listings/${id}`);
 };
 
 module.exports.deleteListing = async (req, res, next) => {
@@ -111,12 +116,17 @@ module.exports.deleteListing = async (req, res, next) => {
     return res.redirect("/listings");
   }
 
-  if (!listing.owner.equals(req.user._id)) {
-    req.flash("error", "You do not have permission to delete this listing!");
-    return res.redirect(`/listings/${id}`);
-  }
+ 
 
-  await Listing.findByIdAndDelete(id);
-  req.flash("success", "Listing Deleted !!!!");
-  res.redirect("/listings");
+  if (listing.owner.equals(req.user._id) || req.user._id.toString() === process.env.ADMINID) {
+    await Listing.findByIdAndDelete(id);
+    req.flash("success", "Listing Deleted!");
+    res.redirect("/listings");
+} else {
+    req.flash("error", "You don't have permission to delete this listing!");
+    res.redirect(`/listings/${id}`);
+}
+
+ 
 };
+

@@ -1,0 +1,161 @@
+/* Container */
+.auth-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 800px;
+    padding: 80px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Left Section - Welcome Message */
+.welcomeMessage {
+    flex: 1;
+    color: white;
+    padding: 100px;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+   
+}
+
+.welcomeMessage h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.welcomeMessage h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.welcomeMessage h3 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Right Section - Form */
+.authForm {
+    flex: 1;
+    padding: 50px;
+    border-radius: 0 15px 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Heading */
+.authForm h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Form */
+.auth-form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.form-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+/* Inputs */
+.form-input {
+    width: 300px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-input:focus {
+    border-color: #e71313;
+    outline: none;
+    box-shadow: 0 0 8px rgba(231, 19, 19, 0.3);
+}
+
+/* Validation Feedback */
+.invalid-feedback,
+.valid-feedback {
+    font-size: 14px;
+    margin-top: -8px;
+    margin-bottom: 12px;
+}
+
+/* Submit Button */
+.form-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 210px;
+    color: white;
+    background: #e71313;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.form-button:hover {
+    background: #b50f0f;
+    transform: scale(1.03);
+}
+
+/* Login Link */
+.authForm a {
+    display: block;
+    
+    font-size: 22px;
+    font-weight: 500;
+    color: #1ea620;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.authForm a:hover {
+    color: #b50f0f;
+    transform: scale(1.02);
+    text-decoration: underline;
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+    .auth-container {
+        flex-direction: column;
+        height: auto;
+        padding: 40px;
+    }
+
+    .welcomeMessage {
+        border-radius: 15px 15px 0 0;
+        padding: 60px;
+    }
+
+    .authForm {
+        border-radius: 0 0 15px 15px;
+        padding: 40px;
+    }
+
+    .auth-form {
+        max-width: 100%;
+    }
+}

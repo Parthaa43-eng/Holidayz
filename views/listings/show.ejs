@@ -4,20 +4,20 @@
 <body>
 
     <div class="owners-option">
-        <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
-            <div class="dropdown">
-                <button class="dropdown-button" onclick="toggleDropdown()">Owners Options</button>
-                <div class="dropdown-menu">
-                    
-                    <ul>
-                        <li><a class="edit" href="/listings/<%= listing._id %>/edit">Edit this Listing</a></li>
-                        <li><form class="delete-form" action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="delete-button">Delete Listing</button>
-                        </form></li>
-                    </ul>
-                </div>
-            </div>
-        <% } %>
+        <% if (currUser && currUser._id && listing && listing.owner && listing.owner._id && 
+        (currUser._id.toString() === listing.owner._id.toString() || currUser._id.toString() === process.env.ADMINID)) { %>
+             
+      <ul>
+          <li><a class="edit" href="/listings/<%= listing._id %>/edit">Edit this Listing</a></li>
+          <li>
+              <form class="delete-form" action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                  <button type="submit" class="delete-button">Delete Listing</button>
+              </form>
+          </li>
+      </ul>
+  
+  <% } %>
+  
     </div>
 
 
@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col-6">
                     <% if(listing.reviews.length > 0) { %>
-                        <h3 class="mb-3" style="color: #e71313;">All Reviews</h3>
+                        <h3 class="mb-3" style="color: #e71313;">Guest Impressions and Reviews</h3>
                         
                         <% for (review of listing.reviews) { %>
                            
@@ -117,33 +117,65 @@
 <hr class="mt-4">
         
 <% if(currUser) { %>
+    <link rel="stylesheet" href="/css/review.css">
     <div class="review-container">
-        <h3 class="heading">Give a Review</h3>
-        <form action="/listings/<%=listing._id%>/reviews" method="POST">
+        <h3 class="heading">How Was Your Experience?</h3>
+        <form action="/listings/<%=listing._id%>/reviews" method="POST" class="review-form">
             
-            <!-- Rating -->
-            <div class="form-group">
-                <label for="rating" class="label">Rating</label>
-                <input type="range" class="range-slider" min="0" max="5" id="rating" name="review[rating]">
+            
+
                 
-            </div>
+<div class="form-rating">
+    <label for="rating" aria-required="true" class="label fs-4">Rating</label>
+    <div class="rating-stars">
+        <input type="radio" id="star5" name="review[rating]" value="5">
+        <label for="star5" class="star">&#9733;</label>
+        
+        <input type="radio" id="star4" name="review[rating]" value="4">
+        <label for="star4" class="star">&#9733;</label>
+        
+        <input type="radio" id="star3" name="review[rating]" value="3 " checked>
+        <label for="star3" class="star">&#9733;</label>
+        
+        <input type="radio" id="star2" name="review[rating]" value="2">
+        <label for="star2" class="star">&#9733;</label>
+        
+        <input type="radio" id="star1" name="review[rating]" value="1">
+        <label for="star1" class="star">&#9733;</label>
+    </div>
+</div>
+
+                
+           
 
             <!-- Comment -->
-            <div class="form-group">
-                <label for="comment" class="label">Comment</label>
-                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="textarea" required></textarea>
-            </div>
+           
+                
+                <textarea name="review[comment]" placeholder="Leave your comment" id="comment" cols="30" rows="5" class="textarea" required></textarea>
+           
 
             <!-- Submit Button -->
-            <button class="btn">Submit</button>
+            <div class="form-group">
+                <button style="margin-top: 100px;" class="btn btn-border-outline">Submit</button>
+            </div>
         </form>
     </div>
+
+    <script>
+        const ratingInput = document.getElementById("rating");
+        const ratingDisplay = document.getElementById("rating-value");
+        ratingInput.addEventListener("input", function() {
+            ratingDisplay.textContent = ratingInput.value;
+        });
+    </script>
 <% } %>
+
+
 
 
         
         <div>
-            <h2>You will be here </h2>
+            <h2>Where You will be ? </h2>
         </div>
        <div id="map">
        
@@ -214,11 +246,12 @@
                 }
             });
     </script>
-    
+     
+     <div style="margin-left: 40%;">
+        <h2  ><%= listing.location %> , <%= listing.country %>  </h2>
+    </div>
 
     </div>
 </body>
 
 
-<!--     
- -->
